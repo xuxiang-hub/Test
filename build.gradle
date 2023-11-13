@@ -1,0 +1,55 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.13'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'java'
+}
+
+group = 'com.xuxiang'
+version = 'V11'
+sourceCompatibility = '1.8'
+
+repositories {
+    maven { url 'https://jitpack.io' }
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // Jackson 依赖，生成严格的 JSON 格式文件
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.5'
+    //Apache PDFBox， 帮助读取pdf内容
+    implementation 'org.apache.pdfbox:pdfbox:2.0.27'
+    implementation 'com.google.code.gson:gson:2.8.8'
+    implementation 'com.alibaba:fastjson:1.2.78'
+
+
+    //jpa
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    //mysql
+    implementation 'mysql:mysql-connector-java:8.0.26'
+    // lombok
+    implementation 'org.projectlombok:lombok:1.18.22'
+    //lombok
+    //配置用于编译期，它包含 Lombok JAR 文件，但不包含在运行时。
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    //配置用于处理 Lombok 注解，它在编译时生成相应的代码。
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    //pcap4j 用于流量分析
+    implementation 'org.pcap4j:pcap4j-core:1.8.2'
+    implementation 'org.pcap4j:pcap4j-packetfactory-static:1.8.2'
+
+    //okHttp用于发送http请求
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+
+    implementation 'org.apache.maven:maven-artifact:3.8.4' // 版本比较
+
+    // openAI问答sdk
+    implementation 'com.theokanning.openai-gpt3-java:api:0.16.1'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
